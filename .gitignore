@@ -1,0 +1,51 @@
+# Terraform working directory and caches
+**/.terraform/*
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Terraform plan output files
+*.tfplan
+*.plan
+
+# Terraform crash logs
+crash.log
+crash.*.log
+
+# Terraform override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Local variable definitions (often contain secrets)
+*.auto.tfvars
+terraform.tfvars
+terraform.tfvars.json
+
+# Keep local CLI config private
+.terraformrc
+terraform.rc
+
+# Common large/binary artifacts
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+*.iso
+*.img
+*.bin
+*.jar
+*.war
+*.ear
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.psd
+*.sqlite
+*.db
+*.bak

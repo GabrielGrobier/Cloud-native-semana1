@@ -1,0 +1,7 @@
+services:
+  microservice:
+    image: ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:latest
+    container_name: ${IMAGE_NAME}
+    restart: unless-stopped
+    ports:
+      - "80:8080"
