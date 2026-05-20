@@ -1,5 +1,6 @@
 name: Build and Push Docker Image
 
+## un desencadenador 
 on:
   push:
     branches:
@@ -11,10 +12,11 @@ env:
 
 jobs:
   docker:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest ## usamos una maquina que tenga lo queremos  Docker - hub (repositorio de imagenes de docker )
     permissions:
       contents: read
 
+      #accion obtener mi proyecto ( codigo ) 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,6 +31,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
 
       - name: Extract Docker metadata
         id: meta
