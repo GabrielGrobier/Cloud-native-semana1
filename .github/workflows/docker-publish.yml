@@ -1,6 +1,6 @@
 name: Build and Push Docker Image
 
-## un desencadenador 
+## un desencadenador Trigger
 on:
   push:
     branches:
@@ -10,6 +10,9 @@ on:
 env:
   IMAGE_NAME: ${{ secrets.DOCKER_IMAGE_NAME }}
 
+  
+
+
 jobs:
   docker:
     runs-on: ubuntu-latest ## usamos una maquina que tenga lo queremos  Docker - hub (repositorio de imagenes de docker )
@@ -18,6 +21,7 @@ jobs:
 
       #accion obtener mi proyecto ( codigo ) 
     steps:
+      #acciones git clone
       - name: Checkout repository
         uses: actions/checkout@v4
 
