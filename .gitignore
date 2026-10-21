@@ -49,3 +49,10 @@ terraform.rc
 *.sqlite
 *.db
 *.bak
+
+# Artefactos locales de Java y bases H2
+**/target/
+**/data/
+*.mv.db
+*.trace.db
+.env
