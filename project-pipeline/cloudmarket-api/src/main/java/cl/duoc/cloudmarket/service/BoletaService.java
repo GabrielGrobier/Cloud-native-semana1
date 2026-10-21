@@ -1,6 +1,8 @@
 package cl.duoc.cloudmarket.service;
 
 import cl.duoc.cloudmarket.dto.BoletaResponse;
+import cl.duoc.cloudmarket.event.VentaRegistradaEvent;
+import org.springframework.context.ApplicationEventPublisher;
 import cl.duoc.cloudmarket.dto.CrearBoletaRequest;
 import cl.duoc.cloudmarket.dto.DetalleBoletaResponse;
 import cl.duoc.cloudmarket.dto.ProductoCantidadRequest;
@@ -31,12 +33,15 @@ public class BoletaService {
 
     private final BoletaRepository boletaRepository;
     private final ProductoRepository productoRepository;
+    private final ApplicationEventPublisher eventPublisher;
 
     // Inyeccion de dependencias por constructor
     public BoletaService(BoletaRepository boletaRepository,
-                         ProductoRepository productoRepository) {
+                         ProductoRepository productoRepository,
+                         ApplicationEventPublisher eventPublisher) {
         this.boletaRepository = boletaRepository;
         this.productoRepository = productoRepository;
+        this.eventPublisher = eventPublisher;
     }
 
     // -------------------------------------------------------
@@ -108,6 +113,8 @@ public class BoletaService {
         boleta.setTotal(total);
 
         Boleta boletaGuardada = boletaRepository.save(boleta);
+        eventPublisher.publishEvent(new VentaRegistradaEvent(
+                boletaGuardada.getId(), boletaGuardada.getTotal()));
 
         // 5. Retornar la respuesta mapeada
         return mapearAResponse(boletaGuardada);
