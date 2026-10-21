@@ -92,4 +92,4 @@ jobs:
             printf '%s' "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             docker compose pull
             docker compose up -d --remove-orphans
-            docker compose ps
+     
