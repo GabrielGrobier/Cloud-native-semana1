@@ -242,11 +242,11 @@ mvn spring-boot:run
 
 La aplicación quedará disponible en: `http://localhost:8080`
 
-### Consola H2 (base de datos)
-Acceder a `http://localhost:8080/h2-console` con:
-- **JDBC URL:** `jdbc:h2:file:/app/data/cloudmarketdb`
-- **User Name:** `sa`
-- **Password:** (vacío)
+### Persistencia H2
+La aplicación usa H2 con datos en archivo (`jdbc:h2:file:./data/cloudmarketdb`).
+La consola H2 está deshabilitada por defecto. En Docker Compose, el directorio
+`/app/data` se monta como volumen para conservar los datos al recrear el contenedor.
+Para pruebas automatizadas se utiliza H2 en memoria mediante el perfil `test`.
 
 ---
 
