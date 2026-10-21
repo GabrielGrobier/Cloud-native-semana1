@@ -10,8 +10,7 @@ WORKDIR /app
 COPY pom.xml .
 
 # Descargar dependencias sin compilar el codigo fuente
-RUN apk add --no-cache maven && \
-    mvn dependency:go-offline -q
+RUN apk add --no-cache maven && mvn dependency:go-offline -q
 
 # Copiar el codigo fuente
 COPY src ./src
